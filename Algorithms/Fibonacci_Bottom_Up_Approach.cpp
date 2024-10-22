@@ -4,30 +4,29 @@ using namespace std;
 #define ll long long
 
 ll fib(int n, vector<ll>& arr) {
-
-    if (arr[n] != -1) {
-        return arr[n];
-    }
-
-    ll f;
     if (n <= 2) {
-        f = 1;
-    } else {
-        f = fib(n - 1, arr) + fib(n - 2, arr);
+        return 1;
+    }
+    
+    // Calculate Fibonacci numbers iteratively
+    for (int i = 3; i <= n; i++) { 
+        arr[i] = arr[i - 1] + arr[i - 2];
     }
 
-    arr[n] = f; // Store the result in the memoization array
-    return f;
+    return arr[n];
 }
 
 int main() {
-    // Code to Find n-th Fibonacci in Linear Running Time
+    // Code to find the n-th Fibonacci number in linear time
     int n;
     cin >> n;
-    vector<ll> vis(n + 1, -1);
+    
+    vector<ll> vis(n + 1);
+    vis[1] = 1;
+    vis[2] = 1;
 
     cout << n << "-th Fibonacci Number is " << fib(n, vis) << endl;
 
     /* Time Complexity: O(n)
-       Space Complexity: O(n) for Visited Array + O(n) for Recursion Stack */
+       Space Complexity: O(n) for the array storing Fibonacci numbers */
 }
