@@ -25,7 +25,7 @@ int main() {
     int n;
     cin >> n;
 
-    vector<ll> vis(n + 1, -1); // Use vector for dynamic array initialization
+    vector<ll> vis(n + 1, -1);
 
     cout << n << "-th Fibonacci Number is " << fib(n, vis) << endl;
 
